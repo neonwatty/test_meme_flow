@@ -23,14 +23,8 @@ jobs:
           bundler-cache: true
           working-directory: ./meme_search_app
 
-      - name: Print Ruby version
-        run: ruby -v
-
-      - name: Print Bundler version
-        run: bundle -v
-
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: bundle exec bin/brakeman --no-pager
         working-directory: ./meme_search_app
 
   scan_js:
