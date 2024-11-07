@@ -45,7 +45,7 @@ jobs:
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         working-directory: meme_search_app
-        run: bin/importmap audit
+        run: gem uninstall error_highlight -v 0.3.0 && bin/importmap audit
 
   lint:
     runs-on: ubuntu-latest
