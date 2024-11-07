@@ -61,7 +61,7 @@ jobs:
           working-directory: meme_search_app
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: gem uninstall error_highlight -v 0.3.0 && bin/rubocop -f github
         working-directory: meme_search_app
 
   test:
