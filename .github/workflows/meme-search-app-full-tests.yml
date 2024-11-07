@@ -1,4 +1,4 @@
-name: rails tests
+name: rails tests for meme search app
 
 on:
   pull_request:
