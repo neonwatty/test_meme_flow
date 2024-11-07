@@ -27,7 +27,7 @@ jobs:
         run: gem install bundler && gem update --system
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: gem update --system && bin/brakeman --no-pager
         working-directory: meme_search_app
 
   scan_js:
