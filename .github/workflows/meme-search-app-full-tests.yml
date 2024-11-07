@@ -24,10 +24,10 @@ jobs:
           working-directory: meme_search_app
 
       - name: Update Bundler
-        run: gem install bundler
+        run: gem install bundler && gem update --system
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: gem uninstall error_highlight -v 0.3.0 && bin/brakeman --no-pager
+        run: bin/brakeman --no-pager
         working-directory: meme_search_app
 
   scan_js:
