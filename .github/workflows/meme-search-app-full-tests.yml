@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: update bundler
+        run: bundle update --bundler
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
