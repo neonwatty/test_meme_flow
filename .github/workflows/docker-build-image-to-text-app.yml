@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
     branches: ["main"]
-    paths-ignore:
-      - "**/README.md"
-      - "./meme_search_app"
     paths:
       - "image_to_text_app/**"
 
