@@ -1,9 +1,9 @@
 name: rails tests for meme search app
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
-  workflow_dispatch:
     branches: [main]
     paths:
       - "meme_search_app/**"
@@ -20,17 +20,15 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
           working-directory: ./meme_search_app
 
-      - name: Print Ruby version
-        run: ruby -v
+      - name: Install dependencies
+        run: gem install bundler && bundle install
+        working-directory: ./meme_search_app
 
-      - name: Print Bundler version
-        run: bundle -v
-        
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bundle update --bundler && bundle exec bin/brakeman --no-pager
+        run: bin/brakeman -w3 --no-pager
         working-directory: ./meme_search_app
 
   scan_js:
@@ -44,8 +42,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
           working-directory: meme_search_app
+
+      - name: Install dependencies
+        run: gem install bundler && bundle install
+        working-directory: ./meme_search_app
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         working-directory: meme_search_app
@@ -61,8 +63,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
           working-directory: meme_search_app
+
+      - name: Install dependencies
+        run: gem install bundler && bundle install
+        working-directory: ./meme_search_app
 
       - name: Lint code for consistent style
         run: gem uninstall error_highlight -v 0.3.0 && bin/rubocop -f github
@@ -92,7 +98,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Install dependencies
+        run: gem install bundler && bundle install
+        working-directory: ./meme_search_app
 
       - name: Run tests
         env:
