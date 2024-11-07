@@ -3,6 +3,7 @@ name: rails tests for meme search app
 on:
   pull_request:
   push:
+  workflow_dispatch:
     branches: [main]
     paths:
       - "meme_search_app/**"
