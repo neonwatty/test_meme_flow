@@ -99,6 +99,7 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: false
+          working-directory: ./meme_search_app
 
       - name: Install dependencies
         run: gem install bundler && bundle install
