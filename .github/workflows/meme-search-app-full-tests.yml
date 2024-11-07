@@ -106,6 +106,7 @@ jobs:
         working-directory: ./meme_search_app
 
       - name: Run tests
+        working-directory: ./meme_search_app
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
